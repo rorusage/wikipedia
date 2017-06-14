@@ -1,0 +1,8 @@
+.row
+  .col-md-4
+    .list-group
+      - @categories.each do |c|
+        %h1= link_to(c.name, category_path(c), class: "btn btn-lg")
+        %hr
+  .col-md-8
+    %h1 article lists

@@ -20,6 +20,15 @@
               Hi, #{current_user.name}
               %b.caret
             %ul.dropdown-menu
+              %li= link_to("New Category", new_category_path, data: {toggle: "modal", target: "#modal"})
+              .modal.fade{:id => "modal", :role => "dialog"}
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      %button.close{:type => "button", "aria-hidden" => true, "data-dismiss" => "modal"} x
+                      %h4.modal-title Before you create category, please check if present first!
+                    .modal-footer
+                      %button.btn.btn-default{:type => "button", "data-dismiss" => "modal", "aria-hidden" => true} Close
               %li New Article
               %li= link_to("Edit account", edit_user_registration_path)
               %li= link_to("Log out", destroy_user_session_path, method: :delete)
