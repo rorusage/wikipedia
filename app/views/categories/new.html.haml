@@ -1,5 +1,7 @@
 .col-md-4.col-md-offset-4
   %h1 新增類別
-  %br
+  %p Before creating a new category, please check if it has been existed!
+  = link_to("Back to check", root_path)
+  %hr
 
   = render "form"

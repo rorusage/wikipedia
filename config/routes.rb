@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :categories do
+    resources :articles
+  end
   root "categories#index"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

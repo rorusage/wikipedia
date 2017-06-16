@@ -1,0 +1,23 @@
+.col-md-12.text-center
+  %h1= @article.title
+  %h4 Writed by #{@article.author.name}
+  %h6 Created at #{@article.created_at.strftime("%A %B %d %T")}
+  %h6 Latest pdated at #{@article.updated_at.strftime("%A %B %d %T")}
+
+  %br
+  %p= @article.content
+
+
+  %br
+  .list-group
+    = link_to("Back", category_path(@category))
+    = link_to("Edit", edit_category_article_path(@category, @article))
+    - if @article.editable_by?(current_user)
+      = link_to("Destroy", category_article_path(@category, @article), method: :delete, data: {confirm: "Are you sure?"})
+
+
+  %hr
+  %h6 All editors:
+  %br
+  - @article.show_all_editors.each do |e|
+    %h7= e.name

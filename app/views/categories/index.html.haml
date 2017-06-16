@@ -3,6 +3,10 @@
     .list-group
       - @categories.each do |c|
         %h1= link_to(c.name, category_path(c), class: "btn btn-lg")
+        #{c.articles_count}
         %hr
   .col-md-8
-    %h1 article lists
+    - @articles.each do |a|
+      = link_to(a.title, category_article_path(a.category, a), class: "btn btn-lg")
+      = link_to(a.category.name, category_path(a.category), class: "btn btn-md")
+      %br

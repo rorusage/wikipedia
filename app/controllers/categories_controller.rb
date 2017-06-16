@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   before_action :find_category, only: [:edit, :update, :destroy]
   def index
     @categories = Category.all
+    @articles = Article.all.order("updated_at DESC")
   end
 
   def new
@@ -10,7 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.category.new(category_params)
+    @category = current_user.categories.new(category_params)
 
     if @category.save
       redirect_to categories_path, notice: "新增類別成功"
@@ -21,6 +22,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @articles = @category.articles.all
   end
 
   def edit
