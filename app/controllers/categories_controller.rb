@@ -2,8 +2,8 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_category, only: [:edit, :update, :destroy]
   def index
-    @categories = Category.all
-    @articles = Article.all.order("updated_at DESC")
+      @categories = Category.all
+      @articles = Article.all.order("updated_at DESC")
   end
 
   def new

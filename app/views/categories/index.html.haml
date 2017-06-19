@@ -9,4 +9,5 @@
     - @articles.each do |a|
       = link_to(a.title, category_article_path(a.category, a), class: "btn btn-lg")
       = link_to(a.category.name, category_path(a.category), class: "btn btn-md")
+      %p= truncate(a.content, length: 200)
       %br
